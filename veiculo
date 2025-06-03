@@ -1,0 +1,13 @@
+public class Veiculo
+{
+    public string Placa { get; set; }
+    public string Modelo { get; set; }
+    public DateTime DataEntrada { get; set; }
+
+    public Veiculo(string placa, string modelo)
+    {
+        Placa = placa;
+        Modelo = modelo;
+        DataEntrada = DateTime.Now;
+    }
+}
