@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+public class Estacionamento
+{
+    private List<Veiculo> veiculos = new List<Veiculo>();
+    private const decimal taxaPorHora = 5.00m; // Exemplo de taxa
+
+    public void AdicionarVeiculo(Veiculo veiculo)
+    {
+        veiculos.Add(veiculo);
+        Console.WriteLine($"Veículo {veiculo.Placa} adicionado ao estacionamento.");
+    }
+
+    public void RemoverVeiculo(string placa)
+    {
+        var veiculo = veiculos.Find(v => v.Placa == placa);
+        if (veiculo != null)
+        {
+            TimeSpan tempoEstacionado = DateTime.Now - veiculo.DataEntrada;
+            decimal valorCobrado = (decimal)tempoEstacionado.TotalHours * taxaPorHora;
+            veiculos.Remove(veiculo);
+            Console.WriteLine($"Veículo {placa} removido. Valor cobrado: R${valorCobrado:F2}");
+        }
+        else
+        {
+            Console.WriteLine("Veículo não encontrado.");
+        }
+    }
+
+    public void ListarVeiculos()
+    {
+        if (veiculos.Count == 0)
+        {
+            Console.WriteLine("Não há veículos estacionados.");
+            return;
+        }
+        foreach (var v in veiculos)
+        {
+            Console.WriteLine($"Placa: {v.Placa}, Modelo: {v.Modelo}, Data de Entrada: {v.DataEntrada}");
+        }
+    }
+}
