@@ -1,0 +1,20 @@
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Estacionamento estacionamento = new Estacionamento();
+
+        // Adicionar veículos
+        estacionamento.AdicionarVeiculo(new Veiculo("ABC1234", "Fusca"));
+        estacionamento.AdicionarVeiculo(new Veiculo("XYZ5678", "Civic"));
+
+        // Listar veículos
+        estacionamento.ListarVeiculos();
+
+        // Remover veículo
+        estacionamento.RemoverVeiculo("ABC1234");
+
+        // Listar veículos novamente
+        estacionamento.ListarVeiculos();
+    }
+}
